@@ -1,20 +1,20 @@
-**Poject Title**   
+1.**Poject Title**   
 
 Web Studio — A space where different studio members with unique specializations collaborate to deliver high-quality websites tailored to client needs.
 
-Description
+2.Description
 
 This project is a fully responsive landing page built using HTML5, CSS3, and Bootstrap 5.
 It represents a professional digital studio — a team of designers, developers, and strategists working together to create custom web solutions for clients.
 
 The goal of this landing page is to showcase front-end development skills and demonstrate how modern websites can be visually appealing, responsive, and user-friendly.
 
-Live Demo
+3.Live Demo
 
 Live Site:(https://aline-001.github.io/internship-fluxify-t2/)
 GitHub Repository: https://github.com/aline-001/internship-fluxify-t2.git
 
-Installation and Setup
+4.Installation and Setup
 
 
 Clone the repository:
@@ -30,7 +30,7 @@ cd html-bootstrap
 created the index.html file and styles.css inside html-bootstrap
 
 
-Features
+5.Features
 
 Fully responsive layout (mobile, tablet, and desktop)
 
@@ -46,10 +46,17 @@ Footer with contact and social placeholders
 
 Custom CSS for personalized look and feel
 
-Technologies Used
+6.Technologies Used
 
 HTML5 — semantic, structured markup
 
 CSS3 — custom styling and design tweaks
 
 Bootstrap 5 — responsive layout and UI components
+
+7.structure
+
+html-bootstrap/
+│
+├── index.html       # Main landing page with bootstrap for responsiveness
+├── styles.css       # Custom styles
