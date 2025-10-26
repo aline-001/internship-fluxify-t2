@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="search-bar">
+    <h2>Find Your Home</h2>
+    <form method="get" action="{% url 'home' %}">
+        <label>
+            <select name="status">
+                <option value="" {% if request.GET.status == "" %}selected{% endif %}>Property Status</option>
+                <option value="for-sale" {% if request.GET.status == "for-sale" %}selected{% endif %}>For Sale</option>
+                <option value="for-rent" {% if request.GET.status == "for-rent" %}selected{% endif %}>For Rent</option>
+            </select>
+        </label>
+
+        <label>
+            <select name="type">
+                <option value="" {% if request.GET.type == "" %}selected{% endif %}>Property Type</option>
+                <option value="house" {% if request.GET.type == "house" %}selected{% endif %}>House</option>
+                <option value="apartment" {% if request.GET.type == "apartment" %}selected{% endif %}>Apartment</option>
+                <option value="warehouse" {% if request.GET.type == "warehouse" %}selected{% endif %}>Warehouse</option>
+                <option value="land" {% if request.GET.type == "land" %}selected{% endif %}>Land</option>
+            </select>
+        </label>
+        <label>
+            <select name="location">
+                <option value="" {% if request.GET.location == "" %}selected{% endif %}>Location</option>
+                {% for location in locations %}
+                <option value="{{ location }}" {% if request.GET.location == location %}selected{% endif %}>{{ location|title }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>
+            <input
+                type="number"
+                name="min_price"
+                placeholder="Min Price (RWF)"
+                value="{{ request.GET.min_price|default:'' }}">
+        </label>
+
+        <label>
+            <input
+                type="number"
+                name="max_price"
+                placeholder="Max Price (RWF)"
+                value="{{ request.GET.max_price|default:'' }}">
+        </label>
+
+        <button type="submit">Search</button>
+    </form>
+</section>
+
+<section class="properties">
+    <h2>Your Wish, Our Priority</h2>
+    <div class="property-list">
+        {% for property in properties %}
+        <div class="property-card">
+            <img src="{{ property.image.url }}" alt="Property Image">
+            <h3>{{ property.property_type|title }}</h3>
+            <p>{{ property.price }} RWF - {{ property.property_status|title }}</p>
+            <p>{{ property.bedrooms }} bedrooms | {{ property.bathrooms }} bathrooms</p>
+            <p>Location: {{ property.location|title }}</p>
+            <a href="#">More Details</a>
+        </div>
+        {% empty %}
+        <p>No properties match your search criteria.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

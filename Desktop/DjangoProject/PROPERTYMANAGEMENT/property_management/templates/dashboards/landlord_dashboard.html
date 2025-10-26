@@ -1,0 +1,60 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}Landlord Dashboard{% endblock %}
+
+{% block content %}
+<h2>Landlord Dashboard</h2>
+
+<h3>Your Properties</h3>
+{% for property in properties %}
+    <div class="property-card">
+        <h3>{{ property.property_type|title }} - {{ property.name }}</h3>
+        <p>{{ property.location }}</p>
+        <p>{{ property.price }} RWF</p>
+        <p>Status: {{ property.status }}</p>
+        <a href="{% url 'property_detail' property.id %}">View Details</a>
+    </div>
+{% empty %}
+    <p>No properties listed yet.</p>
+{% endfor %}
+
+<!-- Chart.js Visualization for Occupancy and Revenue for Landlord -->
+<h3>Property Overview</h3>
+<canvas id="landlordChart" width="400" height="200"></canvas>
+<script>
+    var ctx = document.getElementById('landlordChart').getContext('2d');
+    var landlordChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Occupied Properties', 'Available Properties'],
+            datasets: [{
+                label: 'Occupancy Overview',
+                data: [{{ occupied_properties }}, {{ available_properties }}],
+                backgroundColor: ['#28a745', '#ffcc00'],
+                borderColor: ['#28a745', '#ffcc00'],
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
+
+<h3>Active Leases</h3>
+{% for lease in active_leases %}
+    <div class="lease-card">
+        <h4>{{ lease.property.name }} - {{ lease.tenant.name }}</h4>
+        <p>Status: {{ lease.status }}</p>
+        <p>Start Date: {{ lease.start_date }} | End Date: {{ lease.end_date }}</p>
+    </div>
+{% empty %}
+    <p>No active leases.</p>
+{% endfor %}
+
+<h3>Tenants</h3>
+{% for tenant in tenants %}
+    <div class="tenant-card">
+        <p>{{ tenant.name }} - {{ tenant.contact }}</p>
+    </div>
+{% empty %}
+    <p>No tenants associated with your properties.</p>
+{% endfor %}
+{% endblock %}

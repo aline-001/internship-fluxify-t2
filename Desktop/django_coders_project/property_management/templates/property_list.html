@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Available Properties</h1>
+<div>
+    {% for property in properties %}
+    <div>
+        <img src="{{ property.image.url }}" alt="{{ property.title }}" width="200">
+        <h2>{{ property.title }}</h2>
+        <p>{{ property.description }}</p>
+        <p>Price: {{ property.price }}</p>
+        <a href="{% url 'property_detail' property.id %}">View Details</a>
+    </div>
+        <form method="get" action="{% url 'property_list' %}">
+             <label><input type="text" name="q" placeholder="Search by title" value="{{ query }}">
+            <button type="submit">Search</button>
+                 </label>
+        </form>
+
+    {% endfor %}
+</div>
+{% endblock %}

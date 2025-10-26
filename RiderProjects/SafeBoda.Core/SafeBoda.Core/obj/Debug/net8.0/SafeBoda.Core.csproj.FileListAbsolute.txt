@@ -1,0 +1,11 @@
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\bin\Debug\net8.0\SafeBoda.Core.deps.json
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\bin\Debug\net8.0\SafeBoda.Core.dll
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\bin\Debug\net8.0\SafeBoda.Core.pdb
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\SafeBoda.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\SafeBoda.Core.AssemblyInfoInputs.cache
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\SafeBoda.Core.AssemblyInfo.cs
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\SafeBoda.Core.csproj.CoreCompileInputs.cache
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\SafeBoda.Core.dll
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\refint\SafeBoda.Core.dll
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\SafeBoda.Core.pdb
+C:\Users\user\RiderProjects\SafeBoda.Core\SafeBoda.Core\obj\Debug\net8.0\ref\SafeBoda.Core.dll

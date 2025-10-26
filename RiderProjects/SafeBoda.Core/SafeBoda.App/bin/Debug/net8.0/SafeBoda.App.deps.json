@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SafeBoda.App/1.0.0": {
+        "dependencies": {
+          "SafeBoda.Core": "1.0.0"
+        },
+        "runtime": {
+          "SafeBoda.App.dll": {}
+        }
+      },
+      "SafeBoda.Core/1.0.0": {
+        "runtime": {
+          "SafeBoda.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SafeBoda.App/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SafeBoda.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

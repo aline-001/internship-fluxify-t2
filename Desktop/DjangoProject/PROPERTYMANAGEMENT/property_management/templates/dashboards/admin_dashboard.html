@@ -1,0 +1,56 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p>Total Properties: {{ total_properties }}</p>
+<p>Total Revenue: {{ total_revenue }} RWF</p>
+<p>Occupancy Rate: {{ occupancy_rate }}%</p>
+
+<h3>Maintenance Requests</h3>
+<ul>
+    {% for request in recent_maintenance_requests %}
+        <li>{{ request.property.name }} - {{ request.issue_description }} ({{ request.created_at }})</li>
+    {% empty %}
+        <li>No recent maintenance requests.</li>
+    {% endfor %}
+</ul>
+
+<h3>Leases</h3>
+<p>Active Leases: {{ active_leases }}</p>
+<p>Expired Leases: {{ expired_leases }}</p>
+
+<h3>User Management</h3>
+<p>Landlords: {{ total_landlords }}</p>
+<p>Tenants: {{ total_tenants }}</p>
+
+<h3>Charts</h3>
+<canvas id="dashboardChart"></canvas>
+
+<script>
+    const chartData = {{ chart_data|json_script:"chart-data" }};
+    const ctx = document.getElementById('dashboardChart').getContext('2d');
+    const dashboardChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartData.labels,
+            datasets: [{
+                label: 'Property Stats',
+                data: chartData.data,
+                backgroundColor: ['#4CAF50', '#FF5733', '#FFD700', '#2196F3'],
+                borderColor: '#000000',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

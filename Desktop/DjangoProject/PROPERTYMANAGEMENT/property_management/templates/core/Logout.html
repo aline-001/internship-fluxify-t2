@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>property management platform</title>
+</head>
+<body>
+<h1>Welcome to Property Management Platform</h1>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="logout-button">Logout</button>
+</form>
+</body>
+</html>

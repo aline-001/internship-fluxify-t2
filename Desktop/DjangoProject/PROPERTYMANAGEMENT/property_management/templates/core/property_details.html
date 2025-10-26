@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ property.name }}{% endblock %}
+
+{% block content %}
+    <section class="property-detail">
+        <h2>{{ property.name }}</h2>
+        <p>{{ property.description }}</p>
+        <p>Price: {{ property.price }} RWF</p>
+        <p>Location: {{ property.location }}</p>
+        <p>Status: {{ property.property_status }}</p>
+        <p>Type: {{ property.property_type }}</p>
+        <p>Bedrooms: {{ property.bedrooms }}</p>
+        <p>Bathrooms: {{ property.bathrooms }}</p>
+
+        <h3>Additional Images</h3>
+        <div class="additional-images">
+            {% for image in property.additional_images.all %}
+                <img src="{{ image.image.url }}" alt="Additional Image">
+            {% empty %}
+                <p>No additional images available.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

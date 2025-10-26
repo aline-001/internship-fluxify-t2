@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Properties</title>
+</head>
+<body>
+    <h1>Properties for Sale and Rent</h1>
+    <ul>
+        {% for property in properties %}
+            <li>
+                <a href="{% url 'property_detail' property.id %}">{{ property.title }}</a>
+                <p>{{ property.description }}</p>
+                <p>{{ property.price }} USD</p>
+                <p>Status: {{ property.get_status_display }}</p>
+                <p>Type: {{ property.get_property_type_display }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

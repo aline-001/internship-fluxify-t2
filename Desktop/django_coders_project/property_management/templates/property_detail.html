@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ property.title }}</h1>
+<img src="{{ property.image.url }}" alt="{{ property.title }}" width="400">
+<p>{{ property.description }}</p>
+<p>Price: {{ property.price }}</p>
+<p>Bedrooms: {{ property.bedrooms }}</p>
+<p>Bathrooms: {{ property.bathrooms }}</p>
+<p>Location: {{ property.location }}</p>
+<a href="{% url 'property_list' %}">Back to Properties</a>
+{% endblock %}

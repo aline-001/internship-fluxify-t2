@@ -1,0 +1,57 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}Tenant Dashboard{% endblock %}
+
+{% block content %}
+<h2>Tenant Dashboard</h2>
+
+<h3>Your Leases</h3>
+{% for lease in leases %}
+    <div class="lease-card">
+        <h4>{{ lease.property.name }}</h4>
+        <p>Rent: {{ lease.property.price }} RWF</p>
+        <p>Status: {{ lease.status }}</p>
+        <p>Start Date: {{ lease.start_date }} | End Date: {{ lease.end_date }}</p>
+    </div>
+{% empty %}
+    <p>You do not have any leases.</p>
+{% endfor %}
+
+<!-- Chart.js Visualization for Tenant Lease Status -->
+<h3>Lease Status Overview</h3>
+<canvas id="tenantChart" width="400" height="200"></canvas>
+<script>
+    var ctx = document.getElementById('tenantChart').getContext('2d');
+    var tenantChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Active Leases', 'Expired Leases'],
+            datasets: [{
+                label: 'Lease Status',
+                data: [{{ active_leases_count }}, {{ expired_leases_count }}],
+                backgroundColor: ['#28a745', '#dc3545'],
+                borderColor: ['#28a745', '#dc3545'],
+                borderWidth: 1
+            }]
+        }
+    });
+</script>
+
+<h3>Maintenance Requests</h3>
+{% for request in maintenance_requests %}
+    <div class="maintenance-card">
+        <p>Property: {{ request.property.name }}</p>
+        <p>Issue: {{ request.issue_description }}</p>
+        <p>Status: {{ request.status }}</p>
+    </div>
+{% empty %}
+    <p>No maintenance requests.</p>
+{% endfor %}
+
+<h3>Submit a Maintenance Request</h3>
+<form method="post">
+    {% csrf_token %}
+    <label><textarea name="issue_description" placeholder="Describe the issue" required></textarea></label>
+    <button type="submit">Submit Request</button>
+</form>
+{% endblock %}
